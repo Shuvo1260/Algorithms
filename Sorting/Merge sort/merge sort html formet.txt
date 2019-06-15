@@ -1,0 +1,77 @@
+#include&lt;iostream&gt;
+using namespace std;
+
+void Merge(int data_list[], int Begin, int mid, int End)
+{
+    int left_data_list[End];
+    int right_data_list[End];
+    int left_index = 0;
+    int right_index = 0;
+
+    for(int index = Begin; index &lt;= mid; index++)
+    {
+        left_data_list[left_index++] = data_list[index];
+    }
+
+    for(int index = mid+1; index &lt;= End; index++)
+    {
+        right_data_list[right_index++] = data_list[index];
+    }
+    int left_index_size = left_index;
+    int right_index_size = right_index;
+    left_index = 0;
+    right_index = 0;
+    int index = Begin;
+
+    while(index &lt;= End && left_index &lt; left_index_size && right_index &lt; right_index_size)
+    {
+        if(left_data_list[left_index] &lt; right_data_list[right_index])
+            data_list[index++] = left_data_list[left_index++];
+        else
+            data_list[index++] = right_data_list[right_index++];
+    }
+
+    while(left_index &lt; left_index_size)
+        data_list[index++] = left_data_list[left_index++];
+
+    while(right_index &lt; right_index_size)
+        data_list[index++] = right_data_list[right_index++];
+
+}
+
+void merge_sort(int data_list[], int Begin, int End)
+{
+    if(Begin &lt; End)
+    {
+        int mid = (Begin + End) / 2;
+
+        merge_sort(data_list, Begin, mid);
+        merge_sort(data_list, mid+1, End);
+
+        Merge(data_list,Begin, mid, End);
+    }
+}
+
+int main()
+{
+    int Elements_number;
+
+    cout &lt;&lt; "Enter Elements number : ";
+    cin &gt;&gt; Elements_number;
+
+    int data_list[Elements_number];
+
+    cout &lt;&lt; "Enter Elements: " &lt;&lt; endl;
+    for(int index = 0; index &lt; Elements_number ; index++)
+        cin &gt;&gt; data_list[index];
+
+    merge_sort(data_list, 0, Elements_number-1);
+
+    cout &lt;&lt; "Sorted Elements: ";
+    for(int index = 0; index &lt; Elements_number ; index++)
+        cout &lt;&lt; data_list[index] &lt;&lt; " ";
+    cout &lt;&lt; endl;
+
+
+    return 0;
+}
