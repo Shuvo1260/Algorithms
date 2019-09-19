@@ -3,10 +3,13 @@
 
 using namespace std;
 
+/// Knapsack determines the most profitable value of given values
 void knapsack(int weight[], int profit[], int table[500][500], int number, int sack_weight)
 {
+    /// Setting value 0 at table first row
     for(int column = 0; column < sack_weight; column++)
         table[0][column] = 0;
+
     for(int row = 1; row <= number ; row++)
     {
         for(int column = 0; column <= sack_weight; column++)
@@ -25,6 +28,7 @@ int main()
     int sack_weight;
     int number;
 
+    /// Input portion
     cout << "Total item number : ";
     cin >> number;
     cout << "Total Sack weight : ";
@@ -45,6 +49,7 @@ int main()
 
     knapsack(weight, profit, table, number, sack_weight);
 
+    /// Output portion
     cout << endl << "Product\\Weight" << endl;
 
     for(int row = 0; row <= number; row++)

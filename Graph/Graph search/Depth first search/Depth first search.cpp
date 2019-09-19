@@ -4,6 +4,7 @@ using namespace std;
 
 #define Max 999
 
+/// Stack class
 class Stack
 {
     int index;
@@ -33,6 +34,8 @@ public:
     }
 };
 
+
+/// Prints the outputs
 void display(int node_list[], int Size)
 {
     cout << "Visited node sequence : ";
@@ -43,20 +46,25 @@ void display(int node_list[], int Size)
     cout << endl;
 }
 
+
+/// Depth First Search function
 void dfs(bool adjacent_list[Max][Max], int node_number, int started_node)
 {
+    /// Initializing all visited array values as non visited
     bool visited[node_number];
     for(int index = 0; index < node_number; index++)
-        visited[index] = true;
+        visited[index] = false;
 
     int node_list[node_number];
     int node_list_index = 0;
     int vertex;
     Stack Stack_list;
 
+    /// First node picked up
     Stack_list.push(started_node);
-    visited[started_node] = false;
+    visited[started_node] = true;
 
+    /// The loop won't stop until all nodes are visited
     while(Stack_list.Empty())
     {
         vertex = Stack_list.pop();
@@ -64,9 +72,11 @@ void dfs(bool adjacent_list[Max][Max], int node_number, int started_node)
 
         for(int index = 0; index < node_number; index++)
         {
-            if(adjacent_list[vertex][index] && visited[index])
+            if(adjacent_list[vertex][index] && !visited[index])
             {
-                visited[index] = false;
+                /// If new node found that haven't visited yet
+                /// that will be pushed into stack
+                visited[index] = true;
                 Stack_list.push(index);
             }
 
@@ -90,6 +100,7 @@ int main()
 
     int query_number;
 
+    /// Input portion
     cout << "Enter query number : ";
     cin >> query_number;
 

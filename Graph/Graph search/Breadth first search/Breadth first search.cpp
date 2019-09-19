@@ -4,6 +4,8 @@ using namespace std;
 
 #define Max 999
 
+
+/// Queue class
 class Queue
 {
     int Front;
@@ -35,6 +37,8 @@ public:
     }
 };
 
+
+/// Display the outputs
 void display(int node_list[], int Size)
 {
     cout << "Visited node sequence : ";
@@ -45,20 +49,25 @@ void display(int node_list[], int Size)
     cout << endl;
 }
 
+
+/// Breadth first search function
 void bfs(bool adjacent_list[Max][Max], int node_number, int started_node)
 {
+    /// Initializing all visited array values as non visited
     bool visited[node_number];
     for(int index = 0; index < node_number; index++)
-        visited[index] = true;
+        visited[index] = false;
 
     int node_list[node_number];
     int node_list_index = 0;
     int vertex;
     Queue queue_list;
 
+    /// First node picked up
     queue_list.push(started_node);
-    visited[started_node] = false;
+    visited[started_node] = true;
 
+    /// The loop won't stop until all nodes are visited
     while(queue_list.Empty())
     {
         vertex = queue_list.pop();
@@ -66,9 +75,11 @@ void bfs(bool adjacent_list[Max][Max], int node_number, int started_node)
 
         for(int index = 0; index < node_number; index++)
         {
-            if(adjacent_list[vertex][index] && visited[index])
+            if(adjacent_list[vertex][index] && !visited[index])
             {
-                visited[index] = false;
+                /// If new node found that haven't visited yet
+                /// that will be pushed into queue
+                visited[index] = true;
                 queue_list.push(index);
             }
 
@@ -81,6 +92,7 @@ int main()
 {
     int node_number;
 
+    /// Input portion
     cout << "Total node number : ";
     cin >> node_number;
 

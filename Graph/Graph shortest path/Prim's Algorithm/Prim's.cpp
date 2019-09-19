@@ -4,6 +4,7 @@
 
 using namespace std;
 
+/// Prims algorithm find the low cost path of undirected graph
 void prims(int graph[500][500], int node_number, bool visited_node[])
 {
 
@@ -23,8 +24,11 @@ void prims(int graph[500][500], int node_number, bool visited_node[])
         {
             if(visited_node[row])
             {
+                /// Visiting all the nodes which connected with the current node
                 for(int column = 0; column < node_number; column++)
                 {
+                    /// If the connected node haven't visited yet then visit
+                    /// and find the lowest cost node from the current node
                     if(!visited_node[column] && graph[row][column] != INF)
                     {
                         if(graph[row][column] < minimum)
@@ -37,6 +41,8 @@ void prims(int graph[500][500], int node_number, bool visited_node[])
                 }
             }
         }
+
+        /// Output portion
         cout << "  " << from << "\t->   " << to << "\t  " << minimum << endl;
         visited_node[to] = true;
         total_cost += minimum;
@@ -46,6 +52,7 @@ void prims(int graph[500][500], int node_number, bool visited_node[])
 
 int main()
 {
+    /// Input portion
     int node_number;
     int graph[500][500];
     bool visited_node[500];

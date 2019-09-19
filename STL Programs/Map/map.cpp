@@ -15,11 +15,14 @@ int main()
     cin >> n;
 
     map <string, int> myMap; /// Declaring map
+    map <string, long> dir;
+    dir["shuvo"] =2;
     for(int counter = 0; counter < n; counter++)
     {
         cin >> name >> value;
         myMap[name] = value; /// Inserting value
     }
+    myMap["shuvo"] = 2;
 
     map <string, int> :: iterator it; /// Map iteration declare
 

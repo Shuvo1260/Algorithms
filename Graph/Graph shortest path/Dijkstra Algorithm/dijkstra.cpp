@@ -6,6 +6,8 @@
 
 using namespace std;
 
+
+/// Output function
 void print_solution(int via_node[], int visited_cost[], int node_number)
 {
     int via_path[node_number][node_number];
@@ -57,6 +59,7 @@ hard then you can use below code **/
 //        cout << index << "\t" << via_node[index] << "\t" << visited_cost[index] << endl;
 //}
 
+/// Dijkstra find the shortest path of directed graph
 void dijkstra(int graph[500][500], int node_number, int source, int visited_cost[], bool visited_node[], int via_node[])
 {
     queue <int> my_queue;
@@ -73,8 +76,10 @@ void dijkstra(int graph[500][500], int node_number, int source, int visited_cost
         vertex = my_queue.front();
         my_queue.pop();
 
+        /// Visiting all the nodes which connected with the current node
         for(int index = 0; index < node_number; index++)
         {
+            /// Finding the lowest cost node from the current node
             if(graph[vertex][index] != INF && !visited_node[index])
             {
                 my_queue.push(index);
@@ -100,6 +105,7 @@ int main()
     int visited_cost[500];
     bool visited_node[500];
 
+    /// Input portion
     cout << "Total node number : ";
     cin >> node_number;
 

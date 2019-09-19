@@ -6,6 +6,7 @@
 #include<windows.h>
 using namespace std;
 
+/// Node with header and leaf
 struct node
 {
     int data;
@@ -29,6 +30,7 @@ int main()
 
     while(1)
     {
+        /// Input portion
         system("cls");
         cout << "For insert first press 'F'" << endl;
         cout << "For insert last press 'L'" << endl;
@@ -103,6 +105,8 @@ void create()
         insert_at_last(element);
     }
 }
+
+/// Inserting the element at the first position of the list
 void insert_at_first(int element)
 {
     node *temporary_linked_list;
@@ -113,6 +117,8 @@ void insert_at_first(int element)
 
     head = temporary_linked_list;
 }
+
+/// Inserting the element at the last position of the list
 void insert_at_last(int element)
 {
     node *temporary_linked_list;
@@ -132,6 +138,8 @@ void insert_at_last(int element)
         last = temporary_linked_list;
     }
 }
+
+/// Inserting the element at the i th position of the list
 void insert_into_list(int element, int position_element)
 {
     node *my_list;
@@ -157,6 +165,8 @@ void insert_into_list(int element, int position_element)
     if(flag)
         cout << "You give wrong address" << endl;
 }
+
+/// Deleting an element from the list
 void delete_element(int element)
 {
     node *my_list, *previous_node = NULL;
@@ -183,6 +193,8 @@ void delete_element(int element)
         cout << "Item not found" << endl;
 
 }
+
+/// Searching an element from the list
 void Search(int element)
 {
     node *my_list;
@@ -206,6 +218,8 @@ void Search(int element)
     if(!flag)
         cout << "Item not found!!" << endl;
 }
+
+/// List displaying function
 void display()
 {
     cout << "Your list elements : ";

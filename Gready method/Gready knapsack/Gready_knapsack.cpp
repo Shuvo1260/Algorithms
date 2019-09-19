@@ -3,6 +3,7 @@
 
 using namespace std;
 
+/// Knapsack function determines the most profitable solution
 void knapsack(double weight[], double profit[], double Ratio[], double solution[], int number, double sack_weight)
 {
     double temp;
@@ -12,6 +13,7 @@ void knapsack(double weight[], double profit[], double Ratio[], double solution[
     for(int index = 0; index < number; index++)
         sequence[index] = index;
 
+    /// Sorting the elements based on ratio
     for(int row = 0; row < number ; row++)
     {
         for(int column = 0; column < number-row-1; column++)
@@ -52,12 +54,14 @@ void knapsack(double weight[], double profit[], double Ratio[], double solution[
             total_profit += profit[index];
         }
     }
+
     if(index < number)
     {
         solution[index] = temp_weight/weight[index];
         total_profit += profit[index] * solution[index];
     }
 
+    /// Sorting the answers
     for(int row = 0; row < number ; row++)
     {
         for(int column = 0; column < number-row-1; column++)
