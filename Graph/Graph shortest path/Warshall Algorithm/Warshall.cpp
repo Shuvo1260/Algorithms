@@ -78,9 +78,6 @@ int main()
         graph[from][to] = cost;
     }
 
-    for(int index = 0;  index < nodeNumber; index++)
-        graph[index][index] = 0;
-
 
     Warshall(graph, nodeNumber);
 
